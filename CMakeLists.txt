@@ -10,12 +10,19 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(USER_HOME_DIR $ENV{HOME})
 include(${USER_HOME_DIR}/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
-# setup options
-option(BUILD_TESTS "whether or not to build the tests" OFF)
-
 find_package(fmt CONFIG REQUIRED)
 find_package(pprint CONFIG REQUIRED)
 find_package(Catch2 CONFIG REQUIRED)
+
+# setup options
+option(BUILD_TESTS "whether or not to build the tests" OFF)
+if (BUILD_TESTS)
+    # print catch2 directory
+    enable_testing()
+    message(STATUS "Catch2_DIR: ${Catch2_DIR}")
+    list(APPEND CMAKE_MODULE_PATH ${Catch2_DIR})
+    # include(Test)
+endif (BUILD_TESTS)
 
 # Get all .cpp files
 file(
