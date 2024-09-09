@@ -1,0 +1,100 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 27,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "clang_ninja",
+      "description": "clang build using Ninja generator",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/toolchain-clang.cmake"
+      }
+    },
+    {
+      "name": "gcc_ninja",
+      "description": "gcc fast setup",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build_gcc",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/toolchain-gcc.cmake"
+      },
+      "warnings": {
+        "uninitialized": true
+      }
+    },
+    {
+      "name": "clang_dev",
+      "inherits": "clang_ninja",
+      "description": "user dev build setup",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER_LAUNCHER": "ccache",
+        "CMAKE_C_COMPILER_LAUNCHER": "ccache",
+        "BUILD_TESTS": "ON"
+      },
+      "warnings": {
+        "uninitialized": true
+      }
+    },
+    {
+      "name": "clang_debug",
+      "inherits": "clang_dev",
+      "description": "user dev build setup with debug build type",
+      "binaryDir": "${sourceDir}/build_debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_TESTS": "ON"
+      }
+    },
+    {
+      "name": "gcc_dev",
+      "inherits": "gcc_ninja",
+      "description": "gcc dev build setup",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER_LAUNCHER": "ccache",
+        "CMAKE_C_COMPILER_LAUNCHER": "ccache"
+      },
+      "warnings": {
+        "uninitialized": true
+      }
+    },
+    {
+      "name": "gcc_debug",
+      "inherits": "gcc_dev",
+      "description": "user dev build setup with debug build type",
+      "binaryDir": "${sourceDir}/build_gcc_debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_TESTS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "clang_dev",
+      "configurePreset": "clang_dev",
+      "jobs": 12
+    },
+    {
+      "name": "clang_debug",
+      "configurePreset": "clang_debug",
+      "jobs": 12
+    },
+    {
+      "name": "gcc_dev",
+      "configurePreset": "gcc_dev",
+      "jobs": 12
+    },
+    {
+      "name": "gcc_debug",
+      "configurePreset": "gcc_debug",
+      "jobs": 12
+    }
+  ]
+}
