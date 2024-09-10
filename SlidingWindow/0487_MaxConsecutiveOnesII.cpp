@@ -12,7 +12,8 @@ public:
             return 1;
         }
         int flipped{-1};
-        int maxCons{1};
+        int maxCounts{1};
+        int offset{0};
 
         int start{0}, end{0};
         while (end < nums.size()) {
@@ -22,13 +23,14 @@ public:
                 flipped = end;
                 ++end;
             } else {
-                maxCons = std::max(maxCons, end - start);
-                start = flipped + 1;
+                maxCounts = std::max(maxCounts, end - start + offset);
+                offset = end - (flipped + 1);
+                start = end;
                 flipped = -1;
             }
         }
-        maxCons = std::max(maxCons, end - start);
-        return maxCons;
+        maxCounts = std::max(maxCounts, end - start + offset);
+        return maxCounts;
     }
 };
 
