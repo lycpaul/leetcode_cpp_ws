@@ -1,4 +1,4 @@
-#include <fmt/core.h>
+#include <fmt/ranges.h>
 #include <iostream>
 #include <set>
 #include <unordered_map>

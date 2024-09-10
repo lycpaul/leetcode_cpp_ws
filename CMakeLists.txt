@@ -11,7 +11,6 @@ set(USER_HOME_DIR $ENV{HOME})
 include(${USER_HOME_DIR}/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 find_package(fmt CONFIG REQUIRED)
-find_package(pprint CONFIG REQUIRED)
 find_package(Catch2 CONFIG REQUIRED)
 
 # setup options

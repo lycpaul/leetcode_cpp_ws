@@ -1,5 +1,5 @@
 #pragma once
-#include <fmt/printf.h>
+#include <fmt/ranges.h>
 #include <iostream>
 #include <vector>
 

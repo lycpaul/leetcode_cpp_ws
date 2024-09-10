@@ -1,5 +1,5 @@
 #pragma once
-#include <fmt/printf.h>
+#include <fmt/ranges.h>
 #include <vector>
 
 template<typename T = int>

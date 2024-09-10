@@ -1,5 +1,5 @@
 #include <cmath>
-#include <fmt/core.h>
+#include <fmt/ranges.h>
 #include <functional>
 #include <iomanip>
 #include <iostream>

@@ -4,10 +4,7 @@
   "builtin-baseline" : "b8ac6696e3af59f4f0666ab81a48ae589cde00a8",
   "dependencies" : [ {
     "name" : "fmt",
-    "version>=" : "10.2.1"
-  }, {
-    "name" : "pprint",
-    "version>=" : "2019-07-19#3"
+    "version>=" : "11.0.2"
   }, {
     "name" : "vcpkg-cmake-config",
     "version>=" : "2024-05-23"

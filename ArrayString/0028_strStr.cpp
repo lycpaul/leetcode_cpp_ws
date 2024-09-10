@@ -1,4 +1,4 @@
-#include <fmt/printf.h>
+#include <fmt/ranges.h>
 using namespace std;
 
 class Solution

@@ -1,5 +1,5 @@
 #include <vector>
-#include <fmt/core.h>
+#include <fmt/ranges.h>
 #include <unordered_map>
 using namespace std;
 
