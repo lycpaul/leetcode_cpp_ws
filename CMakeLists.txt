@@ -24,19 +24,19 @@ if (BUILD_TESTS)
 endif (BUILD_TESTS)
 
 # Get all .cpp files
-file(
-        GLOB_RECURSE
-        SourceFiles
+file(GLOB_RECURSE SourceFiles
         "ArrayString/*.cpp"
-        "LinkedList/*.cpp"
-        "TreesGraphs/*.cpp"
-        "SortingSearching/*.cpp"
-        "DynamicProgramming/*.cpp"
+        "Backtracking/*.cpp"
         "Design/*.cpp"
-        "Math/*.cpp"
+        "DynamicProgramming/*.cpp"
         "Hashing/*.cpp"
+        "LinkedList/*.cpp"
+        "Math/*.cpp"
+        "Others/*.cpp"
         "SlidingWindow/*.cpp"
-        "Others/*.cpp")
+        "SortingSearching/*.cpp"
+        "TreesGraphs/*.cpp"
+)
 
 # Loop through each .cpp file to create a target
 foreach (SourceFile ${SourceFiles})
