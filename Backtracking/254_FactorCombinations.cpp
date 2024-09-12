@@ -6,40 +6,35 @@ using namespace std;
 class Solution
 {
 public:
-    static bool isPrime(const int n)
+    void backtracking(vector<int> &factors, vector<vector<int>> &ans, const int n)
     {
-        // O(sqrt(n))
-        for (int d = 2; d < std::sqrt(n) + 1; ++d) {
-            if (n % d == 0)
-                return false;
+        if (factors.size() > 1) {
+            ans.push_back(factors);
         }
-        return true;
+        auto lastFactor = factors.back();
+        factors.pop_back();
+
+        // replace the lastFactor
+        for (int i = factors.empty() ? 2 : factors.back(); i <= lastFactor / i; ++i) {
+            if (lastFactor % i == 0) {
+                factors.push_back(i);
+                factors.push_back(lastFactor / i);
+                backtracking(factors, ans, n);
+                // restore back the factors list
+                factors.pop_back();
+                factors.pop_back();
+            }
+        }
+        factors.push_back(lastFactor);
     }
 
     vector<vector<int>> getFactors(const int n)
     {
-        if (isPrime(n))
-            return {};
-
-        vector<vector<int>> allFactors;
-        for (int divisor = 2; divisor < n; ++divisor) {
-            if (n % divisor == 0) {
-                // divisible by d
-                int quotient = n / divisor;
-                allFactors.push_back({divisor > quotient ? quotient : divisor,
-                                      divisor > quotient ? divisor : quotient});
-                for (auto &f : getFactors(quotient)) {
-                    if (!f.empty()) {
-                        f.push_back(divisor);
-                        ranges::sort(f);
-                        allFactors.push_back(f);
-                    }
-                }
-            }
-        }
-        ranges::sort(allFactors);
-        allFactors.erase(ranges::unique(allFactors).begin(), allFactors.end());
-        return allFactors;
+        // list of factors
+        vector<int> factors{n};
+        vector<vector<int>> ans{};
+        backtracking(factors, ans, n);
+        return ans;
     }
 };
 
