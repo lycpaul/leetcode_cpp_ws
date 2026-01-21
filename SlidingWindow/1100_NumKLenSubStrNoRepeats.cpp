@@ -1,7 +1,6 @@
-#include <cstring>
-#include <string>
+#include <array>
 #include <iostream>
-#include <set>
+#include <string>
 #include <unordered_map>
 using namespace std;
 
@@ -94,7 +93,6 @@ public:
         return counts;
     }
 };
-
 
 int main()
 {

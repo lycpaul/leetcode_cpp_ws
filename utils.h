@@ -1,5 +1,5 @@
 #pragma once
-#include <bits/stdc++.h>
+#include <cstdlib>
 #include <iostream>
 
 // Example: speed up iostream speed

@@ -12,8 +12,10 @@ public:
     {
         if (n <= 2)
             return 0;
-        bool nonPrimes[n];
-        memset(nonPrimes, false, sizeof(nonPrimes));
+        std::vector<bool> nonPrimes;
+        nonPrimes.resize(n);
+        nonPrimes.assign(n, false);
+        // memset(nonPrimes, false, sizeof(nonPrimes));
         int primeCounts{};
         for (int i = 2; i < n; ++i) {
             if (!nonPrimes[i]) {
@@ -38,8 +40,11 @@ public:
             return 0;
         const int m = (n + 1) / 2;
         int count = m, u = (sqrt(n) - 1) / 2;
-        bool nonPrimes[n];
-        memset(nonPrimes, false, sizeof(nonPrimes));
+        // bool nonPrimes[n];
+        // memset(nonPrimes, false, sizeof(nonPrimes));
+        std::vector<bool> nonPrimes;
+        nonPrimes.resize(n);
+        nonPrimes.assign(n, false);
         for (int i = 1; i <= u; i++)
             if (!nonPrimes[i])
                 for (int k = (i + 1) * 2 * i; k < m; k += i * 2 + 1)
@@ -57,8 +62,11 @@ public:
             return 0;
 
         int sqrtn = sqrt(n - 1);
-        int smallPrimes[sqrtn];
-        int smallPrimeSquares[sqrtn];
+        // int smallPrimes[sqrtn];
+        // int smallPrimeSquares[sqrtn];
+
+        std::vector<int> smallPrimes(sqrtn);
+        std::vector<int> smallPrimeSquares(sqrtn);
         int smallPrimeCount = 0;
 
         // Finding Small Primes
@@ -76,7 +84,7 @@ public:
                 smallPrimeCount++;
             }
         }
-        int primeCount = (n - 2) + smallPrimeCount - adjust(smallPrimes, smallPrimeCount, n, 1, 0);
+        int primeCount = (n - 2) + smallPrimeCount - adjust(smallPrimes.data(), smallPrimeCount, n, 1, 0);
         return primeCount;
     }
 

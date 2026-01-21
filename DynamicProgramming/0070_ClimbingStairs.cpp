@@ -1,9 +1,11 @@
+#include <vector>
 class Solution
 {
 public:
-    int climbStairs(int n)
+    static int climbStairs(int n)
     {
-        int cs[n + 5];
+        std::vector<int> cs;
+        cs.resize(n + 5);
 
         // init base case
         cs[0] = 1;

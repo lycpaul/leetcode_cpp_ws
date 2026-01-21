@@ -7,8 +7,12 @@ set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(USER_HOME_DIR $ENV{HOME})
-include(${USER_HOME_DIR}/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake)
+if (UNIX)
+    set(USER_HOME_DIR $ENV{HOME})
+    include(${USER_HOME_DIR}/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake)
+elseif (WIN32)
+    include(C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake)
+endif ()
 
 find_package(fmt CONFIG REQUIRED)
 find_package(Catch2 CONFIG REQUIRED)
@@ -49,7 +53,7 @@ foreach (SourceFile ${SourceFiles})
     # Include directories
     target_include_directories(
             ${TargetName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include
-            ${COMMON_INCLUDE_DIR})
+    )
 
     # Link libraries
     target_link_libraries(${TargetName} PRIVATE fmt::fmt-header-only)

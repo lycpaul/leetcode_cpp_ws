@@ -15,10 +15,11 @@ subarray if the current element is larger than the accumulated sum. The max_glob
 max_current surpasses its value.
  */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-int maxSubArraySum(vector<int> &nums)
+int maxSubArraySum(std::vector<int> &nums)
 {
     int max_so_far = INT_MIN, max_ending_here = 0;
     for (const int i : nums) {

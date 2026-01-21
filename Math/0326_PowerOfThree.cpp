@@ -3,7 +3,7 @@
 
 class Solution
 {
-    static constexpr double LOG3 = std::log(3);
+    double LOG3 = std::log(3);
 
 public:
     bool isPowerOfThree(int n)

@@ -3,6 +3,7 @@ build/
 build_debug
 build_gcc
 build_gcc_debug
+cmake-build-*
 .cache
 .vscode
 

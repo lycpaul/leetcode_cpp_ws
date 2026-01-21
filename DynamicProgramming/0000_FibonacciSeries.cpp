@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -10,7 +11,8 @@ public:
         // Fibonacci numbers.
         // 1 extra to handle
         // case, n = 0
-        int f[n + 2];
+        // int f[n + 2];
+        std::vector<int> f(n + 2);
 
         // 0th and 1st number of the
         // series are 0 and 1
