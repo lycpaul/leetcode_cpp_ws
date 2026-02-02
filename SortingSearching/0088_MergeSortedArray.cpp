@@ -35,7 +35,7 @@ int main()
     // test 1
     for (auto &[nums1, nums2] : testCases) {
         sol.merge(nums1, nums1.size() - nums2.size(), nums2, nums2.size());
-        fmt::print("nums1: {}\n", fmt::join(nums1, ", "));
-        fmt::print("nums2: {}\n\n", fmt::join(nums2, ", "));
+        fmt::print("nums1: {}\n", nums1);
+        fmt::print("nums2: {}\n\n", nums2);
     }
 }
