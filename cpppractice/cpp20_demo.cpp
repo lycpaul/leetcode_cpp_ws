@@ -28,8 +28,7 @@ void demo_concepts()
 
     std::vector<double> doubles{1.1, 2.2, 3.3};
     std::cout << std::format("Average: {:.2f}\n",
-                             average(doubles)); // compile error if non-numeric!
-
+                             average(std::span(doubles))); // compile error if non-numeric!
     // Fails at compile: average(std::vector<std::string>{"a", "b"})
 }
 
@@ -60,12 +59,12 @@ void demo_format()
 {
     std::cout << "\n=== std::format ===\n";
 
-    std::cout << std::format("Pi ≈ {:.3f}, e ≈ {:.3f}\n",
-                             std::numbers::pi_v<double>,
-                             std::numbers::e_v<double>);
+    std::cout << std::vformat("Pi ≈ {:.3f}, e ≈ {:.3f}\n",
+                              std::make_format_args(std::numbers::pi_v<double>,
+                                                    std::numbers::e_v<double>));
 
     int x = 42, y = 1234567;
-    std::cout << std::format("x={:>5}, y={:,}\n", x, y); // right-align, thousands sep
+    std::cout << std::format("x={:>5}, y={}\n", x, y);
 }
 
 // ---------- Feature 4: std::span (non-owning view) ----------
@@ -96,7 +95,8 @@ void demo_chrono()
     auto now = sys_days{2026y / January / 29} + 15h + 30min; // C++20 literals
     std::cout << std::format("Vancouver time: {} ({})\n",
                              now,
-                             year_month_day{now}); // formatted output
+                             year_month_day{
+                                 floor<days>(now)}); // use day-precision for year_month_day
 }
 
 // ---------- Feature 6: constinit & consteval ----------

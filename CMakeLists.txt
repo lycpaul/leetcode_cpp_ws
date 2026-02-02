@@ -9,7 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (UNIX)
     set(USER_HOME_DIR $ENV{HOME})
-    include(${USER_HOME_DIR}/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake)
+    include(${USER_HOME_DIR}/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake)
 elseif (WIN32)
     include(C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake)
 endif ()
