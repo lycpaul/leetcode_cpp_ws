@@ -7,6 +7,7 @@ template<typename T = int>
 struct TreeNodeT
 {
     T val;
+    std::vector<TreeNodeT *> children; // For N-ary tree
     TreeNodeT *left;
     TreeNodeT *right;
 
@@ -92,6 +93,7 @@ std::string printOptVec(const std::vector<std::optional<T>> &vec)
     ret += "]";
     return ret;
 }
+
 template<typename T>
 std::string printVecVec(const std::vector<std::vector<T>> &vecs)
 {
